@@ -34,8 +34,10 @@ $gap: 18px;
     &:hover { background: $color-surface; }
   }
 
-  &__carousel {
+   &__carousel {
     position: relative;
+    width: 100%;
+    min-width: 0;
   }
 
   &__track {
@@ -43,6 +45,8 @@ $gap: 18px;
     grid-auto-flow: column;
     grid-auto-columns: calc((100% - #{$gap * 3}) / 4);
     gap: $gap;
+    min-width: 0;
+    max-width: 100%;
     padding: 6px 4px 22px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
