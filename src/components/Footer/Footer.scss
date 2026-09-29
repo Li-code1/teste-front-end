@@ -1,0 +1,70 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  background: $color-surface;
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  &__brand {
+    padding-right: 40px;
+    p {
+      max-width: 260px;
+      margin: 20px 0 26px;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.4;
+      color: #333;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 22px;
+    color: #222;
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    padding: 0 0 0 80px;
+    border-left: 1px solid $color-border;
+
+    h3 {
+      margin-bottom: 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #555;
+    }
+    li + li { margin-top: 16px; }
+    a {
+      font-family: $font-alt;
+      font-size: 14px;
+      color: #777;
+      &:hover { color: $color-primary; }
+    }
+  }
+
+  &__copy {
+    padding: 16px;
+    background: $color-white;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
+  }
+
+  @include tablet {
+    &__inner { grid-template-columns: 1fr; gap: 32px; }
+    &__brand { padding-right: 0; }
+    &__columns { padding-left: 0; border-left: 0; }
+  }
+  @include mobile {
+    &__columns { grid-template-columns: 1fr 1fr; }
+  }
+}

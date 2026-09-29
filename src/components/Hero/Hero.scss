@@ -1,0 +1,61 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  display: flex;
+  align-items: center;
+  min-height: 390px;
+  background-color: #0b0a12;
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: auto 100%;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, #0b0a12 45%, rgba(11, 10, 18, 0) 75%);
+  }
+
+  &__inner {
+    @include container;
+    position: relative;
+    color: $color-white;
+  }
+
+  &__title {
+    max-width: 540px;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.05;
+  }
+
+  &__subtitle {
+    margin-top: 12px;
+    font-size: 28px;
+    strong { color: $color-yellow; font-weight: 600; }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 205px;
+    height: 50px;
+    margin-top: 40px;
+    border-radius: 4px;
+    background: $color-yellow;
+    color: $color-primary-dark;
+    font-size: 18px;
+    font-weight: 500;
+    transition: filter 0.2s;
+    &:hover { filter: brightness(0.95); }
+  }
+
+  @include mobile {
+    min-height: 300px;
+    background-position: 70% center;
+    &__title { font-size: 32px; }
+    &__subtitle { font-size: 20px; }
+  }
+}

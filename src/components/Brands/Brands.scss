@@ -1,0 +1,39 @@
+@use '../../styles/variables' as *;
+
+.brands {
+  @include container;
+  margin-bottom: 70px;
+
+  &__title {
+    margin-bottom: 26px;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    color: $color-primary;
+    @include mobile { font-size: 22px; }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 34px;
+    padding: 4px 0 16px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 211px;
+    height: 211px;
+    border-radius: 50%;
+    background: $color-white;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    transition: transform 0.2s;
+    &:hover { transform: translateY(-3px); }
+
+    img { width: 118px; height: auto; }
+    @include mobile { width: 140px; height: 140px; img { width: 80px; } }
+  }
+}

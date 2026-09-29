@@ -1,0 +1,99 @@
+@use '../../styles/variables' as *;
+
+.header {
+  background: $color-white;
+
+  &__inner {
+    @include container;
+  }
+
+  &__benefits {
+    display: flex;
+    justify-content: space-between;
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 8px 0;
+    border-bottom: 1px solid $color-surface;
+    font-size: 12px;
+    color: $color-muted;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    strong {
+      font-weight: 600;
+      color: $color-primary-dark;
+    }
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 14px 0 14px;
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    flex: 0 1 630px;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 8px;
+    background: #f4f2ee;
+
+    input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      background: transparent;
+      font-size: 15px;
+      outline: none;
+      &::placeholder { color: $color-muted; }
+    }
+    button { color: #555; display: flex; }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 22px;
+    color: #666;
+    button { display: flex; }
+    @include mobile { gap: 10px; }
+  }
+
+  &__nav {
+    box-shadow: 0 6px 10px -6px rgba(0, 0, 0, 0.2);
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      overflow-x: auto;
+      gap: 20px;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: $color-muted;
+      white-space: nowrap;
+      &.is-highlight { color: $color-primary; font-weight: 600; }
+      &:hover { color: $color-primary; }
+    }
+  }
+
+  @include tablet {
+    &__logo img { width: 110px; height: auto; }
+    &__search { flex: 1; }
+  }
+}
