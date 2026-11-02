@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+
+.newsletter {
+  background: $color-primary-dark;
+  color: $color-white;
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    padding-top: 46px;
+    padding-bottom: 40px;
+  }
+
+  &__text {
+    max-width: 520px;
+    h2 { font-family: $font-display; font-size: 30px; font-weight: 500; line-height: 38px; }
+    p { margin-top: 2px; font-size: 14px; font-weight: 300; line-height: 18px; }
+  }
+
+  &__fields {
+    display: flex;
+    gap: 8px;
+
+    input {
+      width: 233px;
+      height: 42px;
+      padding: 0 24px;
+      border: 0;
+      border-radius: 6px;
+      background: $color-white;
+      color: $color-text;
+      font-size: 14px;
+      &::placeholder { color: #777; }
+    }
+
+    button {
+      width: 157px;
+      height: 42px;
+      border-radius: 6px;
+      background: $color-yellow;
+      color: $color-primary-dark;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      &:hover { filter: brightness(0.95); }
+    }
+  }
+
+  &__terms {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 7px;
+    font-size: 14px;
+    input { width: 14px; height: 14px; margin: 0; }
+  }
+
+  &__message {
+    margin-top: 8px;
+    font-size: 13px;
+    &--error { color: #ffb4b4; }
+    &--success { color: #b6f2c2; }
+  }
+
+  @include tablet {
+    &__inner { flex-direction: column; }
+    &__fields { flex-wrap: wrap; width: 100%; input { flex: 1 1 200px; } }
+  }
+  @include mobile {
+    &__inner { gap: 24px; padding-top: 32px; padding-bottom: 32px; }
+    &__text h2 { font-size: 24px; line-height: 30px; }
+    &__fields { flex-direction: column; input, button { width: 100%; flex: none; } }
+  }
+}

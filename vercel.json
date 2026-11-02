@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/produtos",
+      "destination": "https://app.econverse.com.br/teste-front-end/junior/tecnologia/lista-produtos/produtos.json"
+    }
+  ]
+}

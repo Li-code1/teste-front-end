@@ -1,0 +1,63 @@
+@use '../../styles/variables' as *;
+
+.hero {
+  display: flex;
+  align-items: flex-start;
+  min-height: 390px;
+  padding-top: 77px;
+  background-color: #0b0a12;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &__inner {
+    @include container;
+    color: $color-white;
+  }
+
+  &__title {
+    max-width: 660px;
+    font-size: 52px;
+    font-weight: 600;
+    line-height: 50px;
+  }
+
+  &__subtitle {
+    margin-top: 18px;
+    font-size: 32px;
+    line-height: 48px;
+    strong { color: $color-yellow; font-weight: 600; }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 206px;
+    height: 50px;
+    margin: 42px 0 0 7px;
+    border-radius: 4px;
+    background: $color-yellow;
+    color: $color-primary-dark;
+    font-size: 18px;
+    font-weight: 500;
+    transition: filter 0.2s;
+    &:hover { filter: brightness(0.95); }
+  }
+
+  @include tablet {
+    min-height: 340px;
+    padding-top: 56px;
+    &__title { font-size: 42px; line-height: 46px; }
+    &__subtitle { font-size: 26px; line-height: 38px; }
+  }
+
+  @include mobile {
+    min-height: 300px;
+    padding: 40px 0;
+    background-position: 70% center;
+    &__title { font-size: 32px; line-height: 1.1; }
+    &__subtitle { margin-top: 12px; font-size: 20px; line-height: 1.3; }
+    &__button { margin: 24px 0 0; }
+  }
+}

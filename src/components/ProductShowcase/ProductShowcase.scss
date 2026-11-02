@@ -1,0 +1,109 @@
+@use '../../styles/variables' as *;
+
+$gap: 18px;
+
+.showcase {
+  @include container;
+  margin-bottom: 68px;
+
+  // no layout o título fica a 3px da linha seguinte (abas ou "Ver todos")
+  .section-title { margin-bottom: 3px; }
+
+  &__see-all {
+    display: block;
+    margin: 0 0 21px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  &__tabs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    margin-bottom: 20px;
+    border: 1px solid #b5b5b5;
+  }
+
+  &__tab {
+    height: 38px;
+    border-left: 1px solid #b5b5b5;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: #555;
+
+    &:first-child { border-left: 0; }
+    &.is-active { color: $color-primary; font-weight: 600; }
+    &:hover { background: $color-surface; }
+  }
+
+   &__carousel {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+  }
+
+  &__track {
+    // posicionado para ser o bloco de contenção dos elementos absolutos dos cards (.visually-hidden);
+    // sem isso eles escapam do overflow e alargam a página inteira no celular
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - #{$gap * 3}) / 4);
+    gap: $gap;
+    min-width: 0;
+    max-width: 100%;
+    padding: 5px 5px 22px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 5px; // sem isso o snap descarta o padding e desloca o 1º card
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+
+  &__slide { scroll-snap-align: start; }
+
+  &__status {
+    padding: 60px 0;
+    text-align: center;
+    color: $color-muted;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: $color-white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50%);
+
+    &--prev { left: -14px; }
+    &--next { right: -14px; }
+    // no layout (1440px) as setas ficam fora da área dos cards
+    @media (min-width: 1400px) {
+      width: 32px;
+      height: 32px;
+      &--prev { left: -43px; }
+      &--next { right: -43px; }
+    }
+    &:hover { background: $color-surface; }
+  }
+
+  @include tablet {
+    &__track { grid-auto-columns: calc((100% - #{$gap}) / 2); }
+  }
+  @include mobile {
+    margin-bottom: 40px;
+    &__track { grid-auto-columns: 82%; }
+    &__arrow--prev { left: 0; }
+    &__arrow--next { right: 0; }
+    &__tabs { grid-template-columns: repeat(2, 1fr); }
+    &__tab { border-top: 1px solid #b5b5b5; font-size: 13px; &:nth-child(odd) { border-left: 0; } }
+  }
+}

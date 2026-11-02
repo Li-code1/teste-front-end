@@ -1,0 +1,64 @@
+@use '../../styles/variables' as *;
+
+.categories {
+  @include container;
+  padding-top: 39px;
+  padding-bottom: 77px;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 43px;
+    overflow-x: auto;
+    padding: 0 8px 12px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 129px;
+    font-size: 15px;
+    color: #333;
+    text-align: center;
+
+    &.is-active {
+      color: $color-primary;
+      font-weight: 600;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 129px;
+    height: 129px;
+    border-radius: 8px;
+    background: $color-surface;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+    transition: background 0.2s;
+
+    img { width: 64px; height: 64px; object-fit: contain; }
+  }
+
+  &__item.is-active &__icon { background: $color-white; }
+
+  &__label { white-space: nowrap; }
+
+  &__item { flex-shrink: 0; }
+
+  @include tablet {
+    padding-bottom: 48px;
+    &__list { justify-content: flex-start; gap: 20px; scroll-snap-type: x proximity; }
+    &__item { scroll-snap-align: start; }
+  }
+  @include mobile {
+    padding-top: 24px;
+    padding-bottom: 32px;
+    &__list { gap: 12px; }
+    &__item { width: 96px; gap: 10px; font-size: 13px; }
+    &__icon { width: 96px; height: 96px; img { width: 48px; height: 48px; } }
+  }
+}

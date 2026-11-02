@@ -1,0 +1,78 @@
+@use '../../styles/variables' as *;
+
+.footer {
+  background: $color-surface;
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 443px 1fr;
+    padding-top: 42px;
+    padding-bottom: 41px;
+  }
+
+  &__brand {
+    padding: 19px 40px 0 0;
+    img { width: 165px; height: auto; }
+    p {
+      max-width: 290px;
+      margin: 15px 0 27px;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 21px;
+      color: #333;
+    }
+  }
+
+  &__social {
+    display: flex;
+    gap: 25px;
+    color: #222;
+    button { display: flex; }
+  }
+
+  &__columns {
+    display: grid;
+    grid-template-columns: 222px 249px 1fr;
+    gap: 0;
+    min-height: 198px;
+    padding: 37px 0 0 90px;
+    border-left: 2px solid #d9d9d9;
+
+    h3 {
+      margin-bottom: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      color: #555;
+    }
+    li + li { margin-top: 11px; }
+    button {
+      display: block;
+      text-align: left;
+      font-family: $font-alt;
+      font-size: 14px;
+      line-height: 21px;
+      color: #777;
+      &:hover { color: $color-primary; }
+    }
+  }
+
+  &__copy {
+    padding: 15px 16px;
+    background: $color-white;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 18px;
+    text-align: center;
+  }
+
+  @include tablet {
+    &__inner { grid-template-columns: 1fr; gap: 32px; }
+    &__brand { padding-right: 0; }
+    &__columns { grid-template-columns: repeat(3, 1fr); min-height: 0; padding-left: 0; border-left: 0; }
+  }
+  @include mobile {
+    &__columns { grid-template-columns: 1fr 1fr; gap: 24px; }
+  }
+}
